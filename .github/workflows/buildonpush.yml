@@ -11,9 +11,19 @@ jobs:
             arch: x86
       - name: Build something
         run: |
-          nmake debug=1
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1.0.0
+          msbuild /p:Configuration=Release
+      - name: Upload client artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: meridian_client_server
-          path: "./run"
+          name: meridian_client
+          path: "./run/localclient"
+      - name: Upload server artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_server
+          path: "./run/server"
+      - name: Upload utils artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_utils
+          path: "./bin"
