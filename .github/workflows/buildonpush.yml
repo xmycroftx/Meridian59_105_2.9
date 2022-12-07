@@ -14,7 +14,7 @@ jobs:
       - name: Build something
         run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32
       - name: PostBuild
-        run: & postbuild.bat
+        run: cmd /c postbuild.bat
       - name: Upload client artifact
         uses: actions/upload-artifact@v3
         with:
