@@ -9,6 +9,8 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
         with:
             arch: x86
+      - name: Prep Dirs
+        run: nmake Aprep
       - name: Build something
         run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32
       - name: Upload client artifact
