@@ -10,7 +10,7 @@ jobs:
         with:
             arch: x86
       - name: Build something
-        run: msbuild Meridian59.sln /p:Configuration=Release|Win32 /p:Platform="Any CPU"
+        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform="Any CPU"
       - name: Upload client artifact
         uses: actions/upload-artifact@v3
         with:
