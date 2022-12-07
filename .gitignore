@@ -8,6 +8,7 @@ run/server/*
 !run/server/blakserv.cfg
 run/localclient/*
 !run/localclient/*.dll
+!run/localclient/resource/.placeholder
 bbgun.exe
 clientpatch.exe
 palcomp.exe
