@@ -41,12 +41,12 @@ exit /b 0
 
 :copying
 echo Copying Kod and Roos to .\run\server\
-robocopy "!m59path!\resource" ".\run\server\rooms" *.roo /R:0 /MT /XO > postbuild_robocopy.log
-robocopy ".\kod" ".\run\server\kod" *.kod *.khd *.lkod /R:0 /MT /XO > postbuild_robocopy.log
+robocopy "!m59path!\resource" ".\run\server\rooms" *.roo /R:0 /MT > postbuild_robocopy.log
+robocopy ".\kod" ".\run\server\kod" *.kod *.khd *.lkod /R:0 /MT > postbuild_robocopy.log
 echo Copying live graphics from !m59path! to client folder.
 rem The error check after this is currently redundant, but kept in case
 rem further copying code is added.
-robocopy "!m59path!\resource" ".\run\localclient\resource" *.roo *.bsf *.bgf *.ogg /R:0 /MT /XO >> postbuild_robocopy.log
+robocopy "!m59path!\resource" ".\run\localclient\resource" *.roo *.bsf *.bgf *.ogg /R:0 /MT >> postbuild_robocopy.log
 if %ERRORLEVEL% GTR 7 goto:eof
 rem These extensions aren't used.
 rem robocopy "!m59path!\resource" ".\run\localclient\resource" *.mid *.xmi *.wav *.mp3 /R:0 /MT /XO > nul
