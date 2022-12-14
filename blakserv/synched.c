@@ -212,7 +212,7 @@ void SynchedProtocolParse(session_node *s,client_msg *msg)
          break;
       if (len >= sizeof(password))
          break;
-      memcpy(password, msg->data + index + 2, len);
+      memcpy_s(password, sizeof password, msg->data + index + 2, len);
       password[len] = 0; /* null terminate string */
       index += 2 + len;
 
