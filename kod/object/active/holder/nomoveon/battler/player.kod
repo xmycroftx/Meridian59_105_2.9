@@ -9602,7 +9602,8 @@ messages:
       if GetTime() < (piLastDeathTime + 2)
       {
          Debug("Averted double-death of",vrName);
-
+         //Everybody Gets one
+         piLastDeathTime = GetTime();
          return;
       }
 
