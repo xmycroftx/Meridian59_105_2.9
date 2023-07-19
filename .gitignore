@@ -4,7 +4,7 @@
 *.bof
 *.rsc
 kodbase.txt
-clientres/*
+clientres*
 run/server/*
 !run/server/blakserv.cfg
 run/localclient/*
