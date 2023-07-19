@@ -28,7 +28,7 @@ properties:
 
    // piMoneyFactor: How much money should be given out?  Raise this number to
    //  increase the amount of money given out.
-   piMoneyFactor = 100
+   piMoneyFactor = 250
 
    // Increase this to increase the number of items dropped from monster deaths.
    piItemFactor = 100
@@ -38,14 +38,14 @@ properties:
 
    // Changed the wait for monsters to spawn.  A decrease means things
    //  spawn faster (less time waiting between spawns).
-   piSpawnRate = 100
+   piSpawnRate = 75
 
    //
    // Player advancement
    //
 
    // XP percent awarded, can be raised to give a bonus.
-   piXPPercent = 100
+   piXPPercent = 130
 
    // piAdvancementRate: Determines how fast or slow advancement goes for all
    //  spells and skills.  This is a percent of normal, and only affects the
@@ -68,7 +68,7 @@ properties:
 
    // Stat reset token has a 1 in (piStatResetTokenDropFactor / monster_level)
    // chance to drop, with monster_level bound between 50 and 150.
-   piStatResetTokenDropFactor = 500000
+   piStatResetTokenDropFactor = 250000
 
    // Lore book drop facter, 1 in piLoreBookDropFactor per loot roll
    piLoreBookDropFactor = 2000
@@ -76,19 +76,19 @@ properties:
    // DefaultDeathCost:  Should always be a value between 1 and 100.  Lowering
    //  this will lower the odds of a dead player losing health and skill/spell
    //  percents.
-   piDefaultDeathCost = 100
+   piDefaultDeathCost = 1
 
    // The training points we grant players each day to reward them for logging on.
-   piLogonBonus = 50
+   piLogonBonus = 500
 
    // The maximum amount of unbound energy we can absorb
-   piUnboundMax = 500
+   piUnboundMax = 100000
 
    // The maximum percentage of XP we can absorb as unbound energy.
    piUnboundAbsorption = 100
 
    // The permillage of unbound energy that is lost every second. 50 means 5 percent.
-   piUnboundDecay = 50
+   piUnboundDecay = 1
 
    // Delay between receiving unbound energy and decay setting in in ms.
    piUnboundDelay = 30000
@@ -99,7 +99,7 @@ properties:
 
    // How far up the food chain can basic players learn?  See player for more
    //  specific information on what this number means.
-   piMaxLearnPoints = 16
+   piMaxLearnPoints = 20
 
    // The default time for building group membership.
    piDefaultGroupTime = 60000
@@ -134,7 +134,7 @@ properties:
    piRescueBaseDelaySec = 5
 
    // If true, spellpower and duration are displayed for all spells cast.
-   pbDisplaySpellData = FALSE
+   pbDisplaySpellData = TRUE
 
    // If true, JoF regains hits when players kill mobs.
    pbFrozRechargeOnKill = TRUE
@@ -250,7 +250,7 @@ properties:
    piMonsterMinionLimit = 4
 
    // Minimum swings needed for a chance to improve a weaponcraft skill.
-   piWeaponcraftImprovementMinimumSwings = 50
+   piWeaponcraftImprovementMinimumSwings = 2
    
    // Riija Sword drops on death? (Used to limit griefing)
    pbRiijaSwordDropOnDeath = FALSE
@@ -262,7 +262,7 @@ properties:
    piIntrigueEnableHP = 50
    
    // If set to true, Resist Rings will lose durability upon taking an appropriate elemental hit.
-   piResistRingLoseDurability = TRUE
+   piResistRingLoseDurability = FALSE
 
    // Length of hold effect players experience when logging or phasing in
    piLogonDelay = 2500
@@ -303,14 +303,14 @@ properties:
    piRodMax = 5
 
    // Do safe rooms recharge rods?
-   pbInnsRechargeRods = FALSE
+   pbInnsRechargeRods = TRUE
 
    // Determines whether players lose faction for attacking each other
    // in a way that requires turning safety off.
    pbFactionLoss = FALSE
 
    // Do all users get "logged on for first time" messages?
-   pbMsgAllForNewUser = FALSE
+   pbMsgAllForNewUser = TRUE
 
    // Do soldiers attack all factioned players?
    pbTroopsAttackNonShielded = FALSE
@@ -349,7 +349,7 @@ properties:
    piDrainFactor = 50
 
    // Enables or disables the follower.
-   pBFollowerEnabled = FALSE
+   pBFollowerEnabled = TRUE
 
    //
    // PvP honor system

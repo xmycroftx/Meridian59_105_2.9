@@ -9168,17 +9168,17 @@ messages:
 
             // Not awarding any unbound energy to players who have recently been involved
             // in PvP.
-            if Send(self,@GetLastPlayerAttackTime)
-               + Send(SETTINGS_OBJECT,@UnboundEnergyAttackDelaySec)
-               > GetTime()
-            {
-               if iUnbound > 0
-               {
-                  Send(self,@MsgSendUser,#message_rsc=player_unbound_energy_wasted);
-               }
-            }
-            else
-            {
+            // if Send(self,@GetLastPlayerAttackTime)
+            //    + Send(SETTINGS_OBJECT,@UnboundEnergyAttackDelaySec)
+            //   > GetTime()
+            // {
+            //   if iUnbound > 0
+            //   {
+            //      Send(self,@MsgSendUser,#message_rsc=player_unbound_energy_wasted);
+            //   }
+            // }
+            // else
+            // {
             
                // Grant only one fourth of the energy if the mob didn't attack the player.
                if ((piFlags & PFLAG_TOOK_DAMAGE) OR (piFlags & PFLAG_DODGED))
@@ -9189,7 +9189,7 @@ messages:
                {
                   Send(self,@AddUnboundEnergy,#iAmount=iUnbound / 4);
                }
-            }
+            // }
          }
 
          // Here, we work out if the player deserves a training point.
@@ -9602,8 +9602,10 @@ messages:
       if GetTime() < (piLastDeathTime + 2)
       {
          Debug("Averted double-death of",vrName);
+
          //Everybody Gets one
          piLastDeathTime = GetTime();
+
          return;
       }
 
