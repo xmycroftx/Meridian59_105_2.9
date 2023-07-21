@@ -1,0 +1,94 @@
+// Meridian 59, Copyright 1994-2012 Andrew Kirmse and Chris Kirmse.
+// All rights reserved.
+//
+// This software is distributed under a license that is described in
+// the LICENSE file that accompanies it.
+//
+// Meridian is a registered trademark.
+
+
+////////////////////////////////////////////////////////////////////////////////
+Explosion is AttackSpell
+
+constants:
+
+   include blakston.khd
+
+resources:
+
+   Explosion_name_rsc = "explosive blast"
+   //needs new bgf VVV
+   Explosion_icon_rsc = iblfire.bgf
+   Explosion_desc_rsc = \
+      "Detonates a magical explosion after a short delay "
+      "to a target at medium range."
+   //needs sound file
+   //Explosion_sound = explosionspell.ogg
+
+classvars:
+
+   vrName = Explosion_name_rsc
+   vrIcon = Explosion_icon_rsc
+   vrDesc = Explosion_desc_rsc
+
+   viSpell_num = SID_EXPLOSION
+
+   viSpell_type = SPL_TYPE_ALL + SPL_TYPE_FIRE
+
+   viSchool = SS_FAREN
+   viSpell_level = 4
+   viMana = 8
+
+   //vrSound_explosionspell = Explosion_sound
+
+   // In seconds, since it works off GetTime().
+   viPostCast_time = 2
+
+   viChance_To_Increase = 15
+
+properties:
+
+   piDamageMin = 20
+   piDamageMax = 30
+   piRange = 20 * FINENESS
+   piExplosionTimer = 3000
+   ptExploTimer = $
+   plTargets = $
+   poWho = $
+   piSpellpower = $
+   plExplosionBooms = $
+   plExploTimers = $
+   plOwner = $
+   
+messages:
+
+DoSpellEffects(what=$,who=$, lTargets=$, state=$,iSpellPower=$,iPowerLevel=100,
+             bItemCast=FALSE, bRing=FALSE, bStun=FALSE,report=TRUE, iDamage=$)
+{
+   local oTargeted, oRoom, poNewBoom, oElement;
+
+   //if Send(First(lTargets),@GetOwner) = $
+   if First(LTargets) = $
+   {
+      return FALSE;
+   }
+
+   Debug("Made it this far!!!!!!");
+   //oTargeted = First(lTargets);
+   //oRoom = Send(oTargeted,@GetOwner);
+
+   //poNewBoom = Create(&ExplosionBoom,#seed=[oTargeted,1,3000,0,0,0,0,0,0]);
+               //Send(oRoom,@NewHold,#what=poNewBoom,#new_row=Send(oTargeted,@GetRow),#new_col=Send(oTargeted,@GetCol),
+               //#fine_row=Send(oTargeted,@GetFineRow),#fine_col=Send(oTargeted,@GetFineCol));
+
+   //Send(oRoom,@SomethingWaveRoom,#what=poNewBoom,#wave_rsc=vrSound_explosionspell);
+
+
+
+   //see lightning for old animating comments
+propagate;
+}
+
+
+end
+////////////////////////////////////////////////////////////////////////////////

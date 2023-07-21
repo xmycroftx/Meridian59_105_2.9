@@ -1341,7 +1341,7 @@ messages:
    EnchantmentTimer(timer = $)
    {
       local i;
-
+      
       foreach i in plEnchantments
       {
          if First(i) = timer
@@ -1354,9 +1354,10 @@ messages:
             {
                Send(Nth(i,2),@EndEnchantment,#who=self);
             }
-
+            if plEnchantments <> $
+            {
             plEnchantments = DelListElem(plEnchantments,i);
-
+            }
             return;
          }
       }
@@ -1431,7 +1432,7 @@ messages:
       local i, state;
 
       state = $;
-
+      
       foreach i in plEnchantments
       {
          if Nth(i,2) = what
@@ -10241,7 +10242,7 @@ messages:
 
       // Delete any enchantments...
       Send(self,@RemoveAllEnchantments);
-
+//bkmk
       // ...or over time effects the monster may have.
       Send(self,@DeleteAllOverTimeEffects);
 

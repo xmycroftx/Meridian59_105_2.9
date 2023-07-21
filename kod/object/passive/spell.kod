@@ -2506,7 +2506,7 @@ messages:
    RemoveEnchantmentEffects(who = $, state = $, report = TRUE, recheck = FALSE)
    {
       Send(self,@EndEnchantment,#who=who,#state=state,#report=report,
-            #recheck=recheck);
+            #recheck=recheck,#stoptoggle=TRUE);
 
       return;
    }
