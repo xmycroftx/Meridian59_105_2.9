@@ -1,0 +1,82 @@
+// Meridian 59, Copyright 1994-2012 Andrew Kirmse and Chris Kirmse.
+// All rights reserved.
+//
+// This software is distributed under a license that is described in
+// the LICENSE file that accompanies it.
+//
+// Meridian is a registered trademark.
+
+
+////////////////////////////////////////////////////////////////////////////////
+ExplosionBoom is Flickerer
+
+constants:
+
+   include blakston.khd
+
+resources:
+
+   ExplosionBoom_name = "explosion"
+   ExplosionBoom_desc = "Holy Toledo!"
+   ExplosionBoom_icon = explosionboom.bgf
+
+classvars:
+
+   vrName = ExplosionBoom_name
+   vrDesc = ExplosionBoom_desc
+   vrIcon = ExplosionBoom_icon
+
+   viStart_frame = 1
+   viEnd_frame = 12
+
+   // Lighting flags.  Default "on" and wavering flags
+   viLightFlags = LIGHT_FLAG_ON
+
+   // Light color.
+   viLightColor = LIGHT_BWHITE
+
+properties:
+
+   //animation speed
+   piAnimation = 80
+   // Intensity, from 0-255.
+   piLightIntensity = 75
+   piAnim_speed = 80
+
+messages:
+   //gotta override the flickerer
+   SetAnimationSpeed()
+   {
+      piAnim_speed = 80;
+
+      return;
+   }
+
+   GetObjectFlags()
+   {
+      local iFlags;
+
+      iFlags = OF_NOEXAMINE;
+      //Removed OF_FLICKERING and it allowed ANIMATE_ONCE
+      return iFlags;
+   }
+
+   SendAnimation()
+   {
+      //cant get this to work
+      //AddPacket(1,ANIMATE_ONCE,4,65,2,1,2,25,2,25);
+     
+      AddPacket(1,ANIMATE_CYCLE,4,piAnim_speed,2,viStart_frame,2,viEnd_frame);
+   
+      return;
+   }
+
+
+   IsFire()
+   "this item makes faren spells in the room stronger."
+   {
+      return TRUE;
+   }
+
+end
+////////////////////////////////////////////////////////////////////////////////

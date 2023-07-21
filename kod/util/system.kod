@@ -3378,6 +3378,10 @@ messages:
       Send(self,@CreateOneSpellIfNew,#num=SID_ENGRAVE,#class=&Engrave);
       Send(self,@CreateOneSpellIfNew,#num=SID_DM_ITEMATT,#class=&DivineEnchantment);
       Send(self,@CreateOneSpellIfNew,#num=SID_SLITHERBOLT,#class=&Slitherbolt);
+      Send(self,@CreateOneSpellIfNew,#num=SID_ENERGY_BOLT,#class=&Energybolt);
+      Send(self,@CreateOneSpellIfNew,#num=SID_EXPLOSION,#class=&Explosion);
+      Send(self,@CreateOneSpellIfNew,#num=SID_EXPLOFUSE,#class=&Explosionfuse);
+  
 
       Send(self,@CreateOneSpellIfNew,#num=SID_CURSE_WEAPON,#class=&CurseWeapon);
       Send(self,@CreateOneSpellIfNew,#num=SID_PARDON,#class=&Pardon);

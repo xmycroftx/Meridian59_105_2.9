@@ -659,6 +659,8 @@ messages:
    {
       local i;
 
+       Debug("enchantment stage 2");
+
       foreach i in plRadiusEnchantments
       {
          if First(i) = timer
@@ -676,16 +678,18 @@ messages:
       return;
    }
 
-   EnchantmentTimer(timer = $)
+   EnchantmentTimer(timer = $, stop = $)
    "Monster propagates here to handle radius enchantments, player does not."
    {
       local i;
+      
+       Debug("enchantment stage 3");
 
       foreach i in plRadiusEnchantments
       {
          if First(i) = timer
          {
-            Send(Nth(i,2),@EndEnchantment,#who=self,#state=Nth(i,3));
+            Send(Nth(i,2),@EndEnchantment,#who=self,#state=Nth(i,3),#stop=true);
 
             plRadiusEnchantments = DelListElem(plRadiusEnchantments,i);
 

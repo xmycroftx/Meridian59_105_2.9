@@ -1,0 +1,156 @@
+// Meridian 59, Copyright 1994-2012 Andrew Kirmse and Chris Kirmse.
+// All rights reserved.
+//
+// This software is distributed under a license that is described in
+// the LICENSE file that accompanies it.
+//
+// Meridian is a registered trademark.
+
+
+////////////////////////////////////////////////////////////////////////////////
+Explosionfuse is Debuff
+
+constants:
+
+   include blakston.khd
+
+resources:
+
+   explosionfuse_name_rsc = "explosion"
+   explosionfuse_icon_rsc = explosionboom.bgf
+   explosionfuse_desc_rsc = \
+      "Detonates a magical explosion after a short delay "
+      "to a target at medium range."
+   explosionfuse_on_rsc = \
+      "A dreadful sense of anticipation overcomes you."
+   explosionfuse_off_rsc  = \
+      "Your flesh combusts!"
+   explosionfuse_already_enchanted_rsc = \
+      "They are already rigged to explode."
+   explosionfuse_success_rsc = \
+      "You magically rig %s%s to explode."
+   explo_enchantment_rsc = \
+      "\n\nYou are about to explode."
+   explosionfuse_no_self = \
+      "You cannot cast explosion upon yourself."
+   Explosion_sound = explosionspell.ogg
+   
+
+classvars:
+
+   vrName = explosionfuse_name_rsc
+   vrIcon = explosionfuse_icon_rsc
+   vrDesc = explosionfuse_desc_rsc
+
+   vrAlreadyEnchanted = explosionfuse_already_enchanted_rsc
+   vrEnchantment_On = explosionfuse_On_rsc
+   vrEnchantment_Off = explosionfuse_Off_rsc
+   vrSuccess = explosionfuse_Success_rsc
+   vrNoSelfTarget = explosionfuse_no_self
+
+   viSpell_num = SID_EXPLOFUSE
+   viSchool = SS_FAREN
+   viSpell_level = 4
+   viMana = 10
+   viChance_To_Increase = 30
+   viMeditate_ratio = 20
+   viSpell_type = SPL_TYPE_ALL + SPL_TYPE_FIRE
+
+   viFlash = FLASH_BAD
+
+   vrExplosion_Sound = explosion_sound 
+   
+
+properties:
+
+   piDamageMin = 20
+   piDamageMax = 30
+   piRange = 20 * FINENESS
+   piBaseDuration = 5000
+   poOriginalCaster = $
+   plTargets = $
+   poTargetInit = $
+   poTargetEffect = $
+   plExplosionTargets = $
+   poNewBoom = $
+   poTargetPersistent = $
+   poSoundObject = $
+
+messages:
+
+   ResetReagents()
+   {
+      plReagents = $;
+      plReagents = Cons([&Mushroom,2],plReagents);
+      plReagents = Cons([&OrcTooth,1],plReagents);
+
+      return;
+   }
+
+   DoSpellEffects(what=$,who=$,lTargets=$,iDuration=0,iSpellPower=0)
+   {
+      
+      
+      if First(lTargets) = $
+      {
+         return FALSE;
+      }
+      poTargetInit = First(lTargets);
+      plExplosionTargets = Cons(poTargetInit,plExplosionTargets);
+      poOriginalCaster = who;
+
+      Send(poTargetInit,@StartEnchantment,#what=self,#who=who,#lTargets=lTargets,
+            #time=3000,#lastcall=TRUE,#addicon=FALSE);
+
+      Send(who,@MsgSendUser,#message_rsc=explosionfuse_success_rsc,
+            #parm1=Send(poTargetInit,@GetDef),#parm2=Send(poTargetInit,@GetName));
+      
+      //Do the spellcasting arms animation
+      Send(who,@DoCast);
+
+      return FALSE;
+   }
+
+   EndEnchantment(what=$,who=$, lTargets=$, state=0,iSpellPower=$, iPowerLevel=100,
+            bItemCast=FALSE, bRing=FALSE, bStun=FALSE,report=TRUE,stoptoggle=$)
+   {
+      local oExplosionSpell, oRoom, oTargetPersistent;
+
+      if stoptoggle=FALSE
+      {
+      plExplosionTargets = DelLastListElem(plExplosionTargets);
+      }      
+      
+      //who has been redefined as the target by the enchantment.
+      oTargetPersistent = who;
+      who = poOriginalCaster;
+      
+      oRoom = Send(oTargetPersistent,@GetOwner);
+      
+      poNewBoom = Create(&ExplosionBoom,#seed=[oTargetPersistent,1,2000,0,0,0,0,0,0]);
+               Send(oRoom,@NewHold,#what=poNewBoom,#new_row=Send(oTargetPersistent,@GetRow),#new_col=Send(oTargetPersistent,@GetCol),
+               #fine_row=Send(oTargetPersistent,@GetFineRow),#fine_col=Send(oTargetPersistent,@GetFineCol));
+      poSoundObject = Create(&SoundObject,#seed=[oTargetPersistent,1,3000,0,0,0,0,0,0]);
+               Send(oRoom,@NewHold,#what=poSoundObject,#new_row=Send(oTargetPersistent,@GetRow),#new_col=Send(oTargetPersistent,@GetCol),
+               #fine_row=Send(oTargetPersistent,@GetFineRow),#fine_col=Send(oTargetPersistent,@GetFineCol));
+      
+      Send(oRoom,@SomethingWaveRoom,#what=poSoundObject,#wave_rsc=vrExplosion_Sound);
+
+
+      if stoptoggle=TRUE
+      {     
+         //Target died, cancelling. But explosion still goes off (above).
+         stoptoggle=FALSE;
+         return;
+      }
+          
+     oExplosionSpell = Send(SYS,@FindSpellByNum,#num=SID_EXPLOSION);
+     Send(oExplosionSpell,@DoSpellEffects,#iPowerLevel=100,#report=TRUE,
+               #who=poOriginalCaster,#lTargets=[oTargetPersistent]);
+           
+      return;
+      
+   }
+
+end
+////////////////////////////////////////////////////////////////////////////////
