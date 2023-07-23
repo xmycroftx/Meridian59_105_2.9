@@ -20,6 +20,11 @@ jobs:
         with:
           name: meridian_client
           path: "./run/localclient"
+      - name: rsc0000.rsb
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_server
+          path: "./run/localclient/resource/rsc0000.rsb"
       - name: Upload server artifact
         uses: actions/upload-artifact@v3
         with:
