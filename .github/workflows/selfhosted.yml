@@ -40,9 +40,9 @@ jobs:
           name: meridian_client
           path: |
             ./run/localclient
-            !/run/localclient/*.roo
-            !/run/localclient/*.bgf
-            !/run/localclient/rsc0000.rsb
+            !/run/localclient/rsc/*.roo
+            !/run/localclient/rsc/*.bgf
+            !/run/localclient/rsc/rsc0000.rsb
       - name: Upload rsc map artifact
         uses: actions/upload-artifact@v3
         with:
