@@ -1,0 +1,36 @@
+name: Test Build on Push
+run-name: ${{ github.actor }} is running a build.
+on: 
+  push:
+    tags:
+      - 'test*' # Push events to matching v*
+jobs:
+  build:
+    runs-on: [self-hosted, Windows]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+            arch: x86
+      - name: Prep Dirs
+        run: nmake Aprep
+      - name: Build something
+        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32
+      - name: PostBuild
+        run: cmd /c postbuild.bat
+      - name: Upload client artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_client
+          path: "./run/localclient"
+      - name: Upload server artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_server
+          path: "./run/server"
+      - name: Upload utils artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_utils
+
+          path: "./bin"
