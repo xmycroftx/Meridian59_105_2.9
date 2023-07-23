@@ -42,10 +42,10 @@ jobs:
       - name: Upload rsc map artifact
         uses: actions/upload-artifact@v3
         with:
-          name: meridian_rsc_and_maps
+          name: meridian_rsc_map
           path: |
-            ./run/localclient/resource/*.roo
             ./run/localclient/resource/rsc0000.rsb
+            ./run/localclient/resource/*.roo
       - name: Upload server artifact
         uses: actions/upload-artifact@v3
         with:
