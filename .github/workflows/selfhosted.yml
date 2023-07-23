@@ -17,7 +17,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v5
         with:
           # All of these options are optional, so you can remove them if you are happy with the defaults
-          concurrent_skipping: 'same_content'
+          concurrent_skipping: 'always'
           skip_after_successful_duplicate: 'true'
   build:
     needs: pre_job
