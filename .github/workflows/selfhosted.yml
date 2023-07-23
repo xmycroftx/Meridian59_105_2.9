@@ -23,6 +23,13 @@ jobs:
         with:
           name: meridian_client
           path: "./run/localclient"
+      - name: Upload rsc map artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_rsc_and_maps
+          path: |
+            ./run/localclient/resource/*.roo
+            ./run/localclient/resource/rsc0000.rsb
       - name: Upload server artifact
         uses: actions/upload-artifact@v3
         with:
