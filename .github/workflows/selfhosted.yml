@@ -1,5 +1,5 @@
 
-name: Test Build on Push
+name: Self-hosted test on Push
 run-name: ${{ github.actor }} is running a build.
 on: 
   push:
