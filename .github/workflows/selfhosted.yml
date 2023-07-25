@@ -25,13 +25,13 @@ jobs:
     runs-on: [self-hosted, Windows]
     steps:
       - uses: actions/checkout@v3
-      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: microsoft/setup-msbuild@v1.1
         with:
-            arch: x86
+            vs-version: '17.0'
       - name: Prep Dirs
         run: nmake Aprep
       - name: Build something
-        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32
+        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v141
       - name: PostBuild
         run: cmd /c postbuild.bat
       - name: Upload client artifact
