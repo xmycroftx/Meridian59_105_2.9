@@ -213,7 +213,8 @@ void GameProcessSessionBuffer(session_node *s)
 
 void GameProcessSessionBufferUDP(session_node *s)
 {
-   bool debug_udp = ConfigBool(DEBUG_UDP);
+   // make conditional without using win32api
+   bool debug_udp = ConfigBool(DEBUG_UDP) != 0;
    if (debug_udp)
    {
       if (!s)
