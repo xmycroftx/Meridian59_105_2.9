@@ -1021,7 +1021,7 @@ properties:
    poBondedItem = $
    ptBondedItemReport = $
 
-   piLastDeathTime = 0
+   piLastDeathTime = 1001
 
    // Temp safe timer for giving players a period of safety after a death
    ptTempSafe = $
