@@ -409,7 +409,8 @@ void AsyncSocketReadUDP(SOCKET sock)
    ///////////////////////////////////////////////////////////////////////
 
    // Print errors/info?
-   bool debug_udp = ConfigBool(DEBUG_UDP);
+   // make conditional without win32api behavior
+   bool debug_udp = ConfigBool(DEBUG_UDP) != 0;
 
    // 1) invalid session or hangup
    if (!session || session->hangup)
