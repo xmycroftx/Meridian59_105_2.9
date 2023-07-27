@@ -73,10 +73,10 @@ properties:
    // Lore book drop facter, 1 in piLoreBookDropFactor per loot roll
    piLoreBookDropFactor = 2000
 
-   // DefaultDeathCost:  Should always be a value between 1 and 100.  Lowering
+   // DefaultDeathCost:  Should always be a value between 3 and 100.  Lowering
    //  this will lower the odds of a dead player losing health and skill/spell
    //  percents.
-   piDefaultDeathCost = 1
+   piDefaultDeathCost = 3
 
    // The training points we grant players each day to reward them for logging on.
    piLogonBonus = 500
