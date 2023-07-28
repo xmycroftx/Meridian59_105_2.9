@@ -349,7 +349,7 @@ properties:
    piDrainFactor = 50
 
    // Enables or disables the follower.
-   pBFollowerEnabled = TRUE
+   pBFollowerEnabled = FALSE
 
    //
    // PvP honor system
