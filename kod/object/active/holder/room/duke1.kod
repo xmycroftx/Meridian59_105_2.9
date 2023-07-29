@@ -14,8 +14,8 @@ constants:
 
    include blakston.khd
 
-   TO_ROW = 33
-   TO_COL = 27
+   TO_ROW = 80
+   TO_COL = 33
 
 resources:
 
@@ -31,8 +31,8 @@ classvars:
 
    vrName = room_name_Duke1
 
-   viTeleport_row = 33
-   viTeleport_col = 27
+   viTeleport_row = 80
+   viTeleport_col = 33
    viTerrain_Type = TERRAIN_CASTLE | TERRAIN_FIELDS | TERRAIN_FOUNTAIN
 
    viWeatherZone = WEATHER_ZONE_TOS
@@ -65,22 +65,12 @@ messages:
 
   /// TO TOWN
 
-      plExits = Cons([ 43, 29, RID_TOS, 13, 18, ROTATE_NONE ],plExits);
-      plExits = Cons([ 44, 29, RID_TOS, 13, 18, ROTATE_NONE ],plExits);
+      plExits = Cons([ 81, 33, RID_TOS, 13, 18, ROTATE_NONE ],plExits);
+      plExits = Cons([ 80, 33, RID_TOS, 13, 18, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 13, 28, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
-      plExits = Cons([ 13, 29, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
-      plExits = Cons([ 13, 30, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
-
-      plExits = Cons([ 14, 15, RID_DUKE2, 41, 2, ROTATE_NONE ],plExits);
-      plExits = Cons([ 14, 16, RID_DUKE2, 41, 2, ROTATE_NONE ],plExits);
-      plExits = Cons([ 15, 15, RID_DUKE2, 41, 2, ROTATE_NONE ],plExits);
-      plExits = Cons([ 15, 16, RID_DUKE2, 41, 2, ROTATE_NONE ],plExits);
-
-      plExits = Cons([ 14, 42, RID_DUKE2, 41, 29, ROTATE_NONE ],plExits);
-      plExits = Cons([ 14, 43, RID_DUKE2, 41, 29, ROTATE_NONE ],plExits);
-      plExits = Cons([ 15, 42, RID_DUKE2, 41, 29, ROTATE_NONE ],plExits);
-      plExits = Cons([ 15, 43, RID_DUKE2, 41, 29, ROTATE_NONE ],plExits);
+      plExits = Cons([ 50, 33, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
+      plExits = Cons([ 51, 32, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
+      plExits = Cons([ 50, 32, RID_DUKE2, 39, 16, ROTATE_NONE ],plExits);
 
       propagate;
    }
@@ -101,9 +91,9 @@ messages:
       Send(self,@NewHold,#what=Create(&Firepit,#iSoundRadius=0),#new_row=23,#new_col=28,
            #fine_row=56,#fine_col=00);
 
-      Send(self,@NewHold,#what=Create(&Dukeguard),#new_row=42,#new_col=32,
+      Send(self,@NewHold,#what=Create(&Dukeguard),#new_row=72,#new_col=32,
            #fine_row=0,#fine_col=0,#new_angle=ANGLE_NORTH_WEST);
-      Send(self,@NewHold,#what=Create(&Dukeguard),#new_row=42,#new_col=27,
+      Send(self,@NewHold,#what=Create(&Dukeguard),#new_row=72,#new_col=27,
            #fine_row=0,#fine_col=0,#new_angle=ANGLE_NORTH_EAST);
 
       propagate;

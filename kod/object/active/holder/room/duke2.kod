@@ -343,14 +343,14 @@ messages:
    {
       plExits = $;
 
-      plExits = Cons([ 40, 15, RID_DUKE1, 14, 29, ROTATE_NONE ],plExits);
+      plExits = Cons([ 40, 15, RID_DUKE1, 50, 33, ROTATE_NONE ],plExits);
       plExits = Cons([ 40, 16, RID_DUKE1, 14, 29, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 42, 2, RID_DUKE1, 15, 16, ROTATE_NONE ],plExits);
-      plExits = Cons([ 42, 3, RID_DUKE1, 15, 16, ROTATE_NONE ],plExits);
+      plExits = Cons([ 42, 2, RID_DUKE1, 51, 20, ROTATE_NONE ],plExits);
+      plExits = Cons([ 42, 3, RID_DUKE1, 51, 20, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 42, 28, RID_DUKE1, 15, 44, ROTATE_NONE ],plExits);
-      plExits = Cons([ 42, 29, RID_DUKE1, 15, 44, ROTATE_NONE ],plExits);
+      plExits = Cons([ 42, 28, RID_DUKE1, 51, 46, ROTATE_NONE ],plExits);
+      plExits = Cons([ 42, 29, RID_DUKE1, 51, 46, ROTATE_NONE ],plExits);
 
       plExits = Cons([  9, 13, RID_DUKE2,  9, 15, ROTATE_NONE ],plExits);
       plExits = Cons([ 10, 13, RID_DUKE2, 10, 15, ROTATE_NONE ],plExits);
