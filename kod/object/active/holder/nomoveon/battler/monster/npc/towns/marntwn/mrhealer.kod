@@ -54,6 +54,7 @@ messages:
             Create(&RemoveCursePotion,#labelled=TRUE),
             Create(&CurePoisonPotion,#labelled=TRUE),
             Create(&CureDiseasePotion,#labelled=TRUE),
+            Create(&RescuePotion,#labelled=TRUE),
             Create(&Flask)
          ],
          $,
