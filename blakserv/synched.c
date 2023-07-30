@@ -389,7 +389,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
 
    aprintf("Created account %i.\n", account_id);
    }
-   if (a == NULL || strcmp(a->password, password) != 0)
+   if (strcmp(a->password, password) != 0)
    {
       s->syn->failed_tries++;
       if (s->syn->failed_tries == ConfigInt(LOGIN_MAX_ATTEMPTS))
