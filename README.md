@@ -152,13 +152,13 @@ which was forked from the [original Meridian 59 codebase]
 README file included as README.old.
 
 ## Server 900 Specific Changes
-We've modified the build settings to increase spawns and loot drops
-Unbound was uncapped to 100000 for testing, it still drains
-Training Points per day are set to 500
-We've fixed various entrances and spawnpoints on maps
-New Explosion (spell) and Lightning Graphics
-Simplified Account creation flow added to login
-Accounts no longer restrict a user to 1 character at a time
-In game macro (bot) commands to allow for simple spellbotting without needing another tool
+* We've modified the build settings to increase spawns and loot drops
+* Unbound was uncapped to 100000 for testing, it still drains
+* Training Points per day are set to 500
+* We've fixed various entrances and spawnpoints on maps
+* New Explosion (spell) and Lightning Graphics
+* Simplified Account creation flow added to login
+* Accounts no longer restrict a user to 1 character at a time
+* In game macro (bot) commands to allow for simple spellbotting without needing another tool
 
 
