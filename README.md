@@ -160,5 +160,6 @@ README file included as README.old.
 * Simplified Account creation flow added to login
 * Accounts no longer restrict a user to 1 character at a time
 * In game macro (bot) commands to allow for simple spellbotting without needing another tool
+* Learning points increased by (now 20) to return to 1996 levels: 6/6 with 1 int.
 
 
