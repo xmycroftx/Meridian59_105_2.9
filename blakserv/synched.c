@@ -357,6 +357,38 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    a = AccountLoginByName(name);
 
    /* bad username, bad password, or suspended? */
+   if (a == NULL)
+   {
+   /* create account and num_slots users for it */
+   int num_slots = 5;
+   int account_id;
+   user_node *u;
+
+   //char *name,*password,*email;
+   char *email;
+   //name = (char *)parms[0];
+   //password = (char *)parms[1];
+   email = name;
+
+   if (CreateAccount(name,password,email,ACCOUNT_NORMAL,&account_id) == False)
+   {
+      aprintf("Account name %s already exists\n",name);
+
+      return;
+   }
+
+   num_slots = ConfigInt(ACCOUNT_NUM_SLOTS);
+
+   // Put an upper limit on number of slots
+   if (num_slots > 10)
+      num_slots = 10;
+
+   // Automated, so don't display users.
+   for (int i = 0; i < num_slots; ++i)
+      u = CreateNewUser(account_id, USER_CLASS);
+
+   aprintf("Created account %i.\n", account_id);
+   }
    if (a == NULL || strcmp(a->password, password) != 0)
    {
       s->syn->failed_tries++;
