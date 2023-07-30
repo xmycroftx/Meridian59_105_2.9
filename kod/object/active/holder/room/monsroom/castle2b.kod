@@ -67,12 +67,12 @@ messages:
       plExits = Cons([ 30, 59, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
       plExits = Cons([ 29, 59, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 40, 47, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
-      plExits = Cons([ 40, 48, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
-      plExits = Cons([ 40, 49, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 37, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 38, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 39, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 41, 27, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
-      plExits = Cons([ 41, 28, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
+      plExits = Cons([ 8, 58, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
+      plExits = Cons([ 8, 57, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
 
       plExits = Cons([ 7,9, ROOM_LOCKED_DOOR ],plExits);
       plExits = Cons([ 7,10, ROOM_LOCKED_DOOR ],plExits);
