@@ -388,7 +388,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       u = CreateNewUser(account_id, USER_CLASS);
 
    aprintf("Created account %i.\n", account_id);
-   a = AccountLoginByName(name);
+   a = GetAccountByID(account_id);
    }
    if (strcmp(a->password, password) != 0)
    {
