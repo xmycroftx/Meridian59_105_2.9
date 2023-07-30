@@ -369,8 +369,8 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //name = (char *)parms[0];
    //password = (char *)parms[1];
    email = name;
-
-   if (CreateAccount(name,password,email,ACCOUNT_NORMAL,&account_id) == False)
+   
+   if (CreateAccountSecurePassword(name,password,email,ACCOUNT_NORMAL,&account_id) == False)
    {
       aprintf("Account name %s already exists\n",name);
 
