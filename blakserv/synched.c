@@ -409,6 +409,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       SuspendAccountAbsolute(a, 0);
 
    /* check if anyone already logged in on same account */
+   /* Can we allow users to login with all their chars?
    other = GetSessionByAccount(a);
    if (other != NULL)
    {
@@ -428,7 +429,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
          AddByteToPacket(AP_ACCOUNTUSED);
          SendPacket(s->session_id);
       }
-   }
+   }*/
 
    /* check if we're too busy, if not an admin. */
    if (a->type != ACCOUNT_ADMIN && a->type != ACCOUNT_DM && !s->active)
