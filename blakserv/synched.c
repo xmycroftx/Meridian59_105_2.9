@@ -366,7 +366,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    int num_slots = 5;
    int account_id;
    user_node *u;  
-   const char *passwordhex;
+   char *passwordhex;
    //char *name,*password,*email;
    char *email;
    //name = (char *)parms[0];
