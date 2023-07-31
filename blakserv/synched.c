@@ -372,7 +372,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //password = (char *)parms[1];
    email = name;
    lprintf("0.Account password attempting create\n");
-   account_id=CreateAccountSecurePassword(name,passwordh,email,ACCOUNT_NORMAL);
+   account_id=CreateAccountSecurePassword(name,password,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
    {
