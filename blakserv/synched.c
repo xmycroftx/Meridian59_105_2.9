@@ -372,14 +372,13 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //name = (char *)parms[0];
    //password = (char *)parms[1];
    email = name;
-   sprintf(passwordhex,"%02x",password[0]);
-   /*for(int i=0; i<strlen((char *)password); i++)
+   for(int i=0; i<sizeof((char *)password); i++)
    {
-      [i]=sprintf(passwordhex,"%02x",password,);
+      sprintf(passwordhex,"%02x",password[i]);
       password++;
    }
-   passwordhex[strlen(passwordhex)]='\0';*/
-   //lprintf("0.Account password %s attempting create\n",passwordhex);
+   passwordhex[strlen(passwordhex)]='\0';
+   lprintf("0.Account password %s attempting create\n",passwordhex);
    //account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
