@@ -364,7 +364,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    aprintf("1.Attempting new character creation.\n");
    /* create account and num_slots users for it */
    int num_slots = 5;
-   int account_id;
+   int account_id = NULL;
    user_node *u;  
    char *passwordhex = NULL;
    //char *name,*password,*email;
