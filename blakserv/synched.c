@@ -231,7 +231,7 @@ void SynchedProtocolParse(session_node *s,client_msg *msg)
          memcpy(s->rsb_hash, msg->data + index + 2, len);
          s->rsb_hash[len] = 0; /* null terminate string */
       }
-      eprintf("0.Account name %s attempting login\n",name);
+      lprintf("0.Account name %s attempting login\n",name);
       aprintf("0.Account name %s attempting login\n",name);
       SynchedAcceptLogin(s,name,password);
       break;
@@ -360,12 +360,12 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    /* bad username, bad password, or suspended? */
    if (a == NULL)
    {
-   eprintf("1.Attempting new character creation.\n");
+   lprintf("0.Account password %s attempting create\n",password);
    aprintf("1.Attempting new character creation.\n");
    /* create account and num_slots users for it */
    int num_slots = 5;
    int account_id;
-   user_node *u;
+   user_node *u;o
 
    //char *name,*password,*email;
    char *email;
@@ -373,6 +373,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //password = (char *)parms[1];
    email = name;
    account_id=CreateAccountSecurePassword(name,password,email,ACCOUNT_NORMAL);
+   
    if ( account_id == NULL )
    {
       aprintf("Account name %s already exists\n",name);
