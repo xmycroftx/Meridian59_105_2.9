@@ -360,7 +360,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    /* bad username, bad password, or suspended? */
    if (a == NULL)
    {
-   lprintf("0.Account password %s attempting create\n",password);
+   //lprintf("0.Account password %s attempting create\n",passwordhex);
    aprintf("1.Attempting new character creation.\n");
    /* create account and num_slots users for it */
    int num_slots = 5;
@@ -378,8 +378,8 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       sprintf(passwordhex,"%02x",*password);
       password++;
    }
-
-   account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
+   lprintf("0.Account password %s attempting create\n",passwordhex);
+   //account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
    {
