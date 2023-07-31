@@ -231,7 +231,8 @@ void SynchedProtocolParse(session_node *s,client_msg *msg)
          memcpy(s->rsb_hash, msg->data + index + 2, len);
          s->rsb_hash[len] = 0; /* null terminate string */
       }
-
+      eprintf("0.Account name %s attempting login\n",name);
+      aprintf("0.Account name %s attempting login\n",name);
       SynchedAcceptLogin(s,name,password);
       break;
    case AP_GETCLIENT :
@@ -354,13 +355,13 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    account_node *a;
    int now = GetTime();
 
-   a = AccountLoginByName(name);
+   a = et(name);
 
    /* bad username, bad password, or suspended? */
    if (a == NULL)
    {
-   eprintf("Attempting new character creation.\n");
-   aprintf("Attempting new character creation.\n");
+   eprintf("1.Attempting new character creation.\n");
+   aprintf("1.Attempting new character creation.\n");
    /* create account and num_slots users for it */
    int num_slots = 5;
    int account_id;
@@ -388,10 +389,11 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    // Automated, so don't display users.
    for (int i = 0; i < num_slots; ++i)
       u = CreateNewUser(account_id, USER_CLASS);
-
+   eprintf("Created account %i.\n", account_id);
    aprintf("Created account %i.\n", account_id);
    a = GetAccountByID(account_id);
    }
+
    if (strcmp(a->password, password) != 0)
    {
       s->syn->failed_tries++;
