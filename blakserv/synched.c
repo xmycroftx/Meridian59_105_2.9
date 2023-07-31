@@ -374,7 +374,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    unsigned char* ptr;
    email = name;
    ptr = (unsigned char *) password;
-   sprintf(passwordhex,"%02x",ptr);
+   
    for(i=0; i<len(ptr); i++)
    {
       passwordhex[i]=sprintf("%02x",ptr[i]);
