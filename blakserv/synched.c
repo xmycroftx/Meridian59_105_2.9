@@ -372,11 +372,9 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //name = (char *)parms[0];
    //password = (char *)parms[1];
    email = name;
-   const char *ptr=NULL;
-   strcpy(ptr,password);
    for(int i=0; i<strlen(password); i++)
    {
-      passwordhex[i]=sprintf(*ptr,"%02x");
+      passwordhex[i]=sprintf(*password,"%02x");
       password++;
    }
    passwordhex[strlen(passwordhex)]='\0';
