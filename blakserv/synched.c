@@ -366,7 +366,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    int num_slots = 5;
    int account_id;
    user_node *u;  
-
+   const char *passwordhex;
    //char *name,*password,*email;
    char *email;
    //name = (char *)parms[0];
@@ -380,9 +380,8 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       sprintf(passwordhex,"%02x",*ptr);
       ptr++;
    }
-   strcpy((const char *) passwordread,passwordhex);
 
-   account_id=CreateAccountSecurePassword(name,passwordread,email,ACCOUNT_NORMAL);
+   account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
    {
