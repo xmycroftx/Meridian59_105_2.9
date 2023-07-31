@@ -365,14 +365,26 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    /* create account and num_slots users for it */
    int num_slots = 5;
    int account_id;
-   user_node *u;
+   user_node *u;  
 
    //char *name,*password,*email;
    char *email;
    //name = (char *)parms[0];
    //password = (char *)parms[1];
    email = name;
-   account_id=CreateAccountSecurePassword(name,password,email,ACCOUNT_NORMAL);
+
+   unsigned char *ptr;
+   char *passwordhex;
+   fprintf(accofile,"ACCOUNT %i:%s:",a->account_id,a->name);
+   
+   ptr = (unsigned char *) a->password;
+   while (*ptr != 0)
+   {
+      passwordhex=+sprintf("%02x",*ptr);
+      ptr++;
+   }
+
+   account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
    {
