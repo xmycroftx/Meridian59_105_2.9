@@ -366,14 +366,14 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    int num_slots = 5;
    int account_id;
    user_node *u;  
-   char *passwordhex;
+   char *passwordhex = NULL;
    //char *name,*password,*email;
    char *email;
    //name = (char *)parms[0];
    //password = (char *)parms[1];
    email = name;
 
-   char *ptr;
+   char *ptr = NULL;
    strcpy( (char*) ptr, password );
    while (*ptr != 0)
    {
