@@ -373,12 +373,10 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    //password = (char *)parms[1];
    email = name;
 
-   char *ptr = NULL;
-   strcpy( (char*) ptr, password );
-   while (*ptr != 0)
+   while (*password != 0)
    {
-      sprintf(passwordhex,"%02x",*ptr);
-      ptr++;
+      sprintf(passwordhex,"%02x",*password);
+      password++;
    }
 
    account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
