@@ -355,7 +355,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    account_node *a;
    int now = GetTime();
 
-   a = et(name);
+   a = AccountLoginByName(name);
 
    /* bad username, bad password, or suspended? */
    if (a == NULL)
