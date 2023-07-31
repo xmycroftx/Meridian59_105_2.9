@@ -365,7 +365,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    /* create account and num_slots users for it */
    int num_slots = 5;
    int account_id;
-   user_node *u;o
+   user_node *u;
 
    //char *name,*password,*email;
    char *email;
