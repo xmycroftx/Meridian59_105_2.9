@@ -375,7 +375,6 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
 
    unsigned char *ptr;
    char *passwordhex;
-   fprintf(accofile,"ACCOUNT %i:%s:",a->account_id,a->name);
    
    ptr = (unsigned char *) a->password;
    while (*ptr != 0)
