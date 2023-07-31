@@ -383,8 +383,8 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       passwordhex=+sprintf("%02x",*ptr);
       ptr++;
    }
-
-   account_id=CreateAccountSecurePassword(name,passwordhex,email,ACCOUNT_NORMAL);
+   const char *passwordread = *passwordhex;
+   account_id=CreateAccountSecurePassword(name,passwordread,email,ACCOUNT_NORMAL);
    
    if ( account_id == NULL )
    {
