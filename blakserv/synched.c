@@ -359,6 +359,8 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
    /* bad username, bad password, or suspended? */
    if (a == NULL)
    {
+   eprintf("Attempting new character creation.\n");
+   aprintf("Attempting new character creation.\n");
    /* create account and num_slots users for it */
    int num_slots = 5;
    int account_id;
