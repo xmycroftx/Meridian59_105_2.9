@@ -1,3 +1,5 @@
+[![Test Build on Push](https://github.com/roge-life/Meridian59_900_1.0/actions/workflows/buildonpush.yml/badge.svg)](https://github.com/roge-life/Meridian59_900_1.0/actions/workflows/buildonpush.yml)
+
 Meridian 59 v2.0, February 2016
 Andrew Kirmse and Chris Kirmse
 
