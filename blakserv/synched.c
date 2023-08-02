@@ -203,7 +203,7 @@ void SynchedProtocolParse(session_node *s,client_msg *msg)
          break;
       if (len >= sizeof(name))
          break;
-      memcpy(name, msg->data + index + 2, len);
+      memcpy_s(name, sizeof name, msg->data + index + 2, len);
       name[len] = 0; /* null terminate string */
       index += 2 + len;
       
@@ -231,7 +231,8 @@ void SynchedProtocolParse(session_node *s,client_msg *msg)
          memcpy(s->rsb_hash, msg->data + index + 2, len);
          s->rsb_hash[len] = 0; /* null terminate string */
       }
-
+      lprintf("0.Account name %s attempting login\n",name);
+      aprintf("0.Account name %s attempting login\n",name);
       SynchedAcceptLogin(s,name,password);
       break;
    case AP_GETCLIENT :
@@ -350,14 +351,52 @@ void CheckIPAddress(session_node *s)
 
 void SynchedAcceptLogin(session_node *s,char *name,char *password)
 {
-   session_node *other;
+   //session_node *other;
    account_node *a;
    int now = GetTime();
 
    a = AccountLoginByName(name);
 
    /* bad username, bad password, or suspended? */
-   if (a == NULL || strcmp(a->password, password) != 0)
+   if (a == NULL)
+   {
+   //lprintf("0.Account password %s attempting create\n",passwordhex);
+   aprintf("1.Attempting new character creation.\n");
+   /* create account and num_slots users for it */
+   int num_slots = 5;
+   int account_id = NULL;
+   user_node *u;
+   //char *name,*password,*email;
+   char *email;
+   //name = (char *)parms[0];
+   //password = (char *)parms[1];
+   email = name;
+   lprintf("0.Account password attempting create\n");
+   account_id=CreateAccountSecurePassword(name,password,email,ACCOUNT_NORMAL);
+   
+   if ( account_id == NULL )
+   {
+      aprintf("Account name %s already exists\n",name);
+
+      return;
+   }
+
+   num_slots = ConfigInt(ACCOUNT_NUM_SLOTS);
+
+   // Put an upper limit on number of slots
+   if (num_slots > 10)
+      num_slots = 10;
+
+   // Automated, so don't display users.
+   for (int i = 0; i < num_slots; ++i)
+      u = CreateNewUser(account_id, USER_CLASS);
+   eprintf("Created account %i.\n", account_id);
+   aprintf("Created account %i.\n", account_id);
+   a = GetAccountByID(account_id);
+   SetAccountPasswordAlreadyEncrypted(a, password);
+   }
+
+   if (strcmp(a->password, password) != 0)
    {
       s->syn->failed_tries++;
       if (s->syn->failed_tries == ConfigInt(LOGIN_MAX_ATTEMPTS))
@@ -409,6 +448,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
       SuspendAccountAbsolute(a, 0);
 
    /* check if anyone already logged in on same account */
+   /* Can we allow users to login with all their chars?
    other = GetSessionByAccount(a);
    if (other != NULL)
    {
@@ -428,7 +468,7 @@ void SynchedAcceptLogin(session_node *s,char *name,char *password)
          AddByteToPacket(AP_ACCOUNTUSED);
          SendPacket(s->session_id);
       }
-   }
+   }*/
 
    /* check if we're too busy, if not an admin. */
    if (a->type != ACCOUNT_ADMIN && a->type != ACCOUNT_DM && !s->active)

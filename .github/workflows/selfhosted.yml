@@ -1,28 +1,55 @@
-name: Test Build on Push
+
+name: Self-hosted test on Push
 run-name: ${{ github.actor }} is running a build.
 on: 
   push:
     tags:
       - 'test*' # Push events to matching v*
 jobs:
+  pre_job:
+    # continue-on-error: true # Uncomment once integration is finished
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          # All of these options are optional, so you can remove them if you are happy with the defaults
+          concurrent_skipping: 'outdated_runs'
+          skip_after_successful_duplicate: 'true'
   build:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
     runs-on: [self-hosted, Windows]
     steps:
       - uses: actions/checkout@v3
-      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: microsoft/setup-msbuild@v1.1
         with:
-            arch: x86
+            vs-version: '15.0'
       - name: Prep Dirs
         run: nmake Aprep
       - name: Build something
-        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32
+        run: msbuild Meridian59.sln /p:Configuration=Release /p:Platform=Win32 /p:PlatformToolset=v141 /p:WindowsTargetPlatformVersion=10.0.17134.0
       - name: PostBuild
         run: cmd /c postbuild.bat
       - name: Upload client artifact
         uses: actions/upload-artifact@v3
         with:
           name: meridian_client
-          path: "./run/localclient"
+          path: |
+            ./run/localclient
+            !/run/localclient/resource/*.roo
+            !/run/localclient/resource/*.bgf
+            !/run/localclient/resource/rsc0000.rsb
+      - name: Upload rsc map artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meridian_rsc_map
+          path: |
+            ./run/localclient/resource/rsc0000.rsb
+            ./run/localclient/resource/*.roo
       - name: Upload server artifact
         uses: actions/upload-artifact@v3
         with:

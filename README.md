@@ -1,3 +1,5 @@
+[![Test Build on Push](https://github.com/roge-life/Meridian59_900_1.0/actions/workflows/buildonpush.yml/badge.svg)](https://github.com/roge-life/Meridian59_900_1.0/actions/workflows/buildonpush.yml)
+
 Meridian 59 v2.0, February 2016
 Andrew Kirmse and Chris Kirmse
 
@@ -151,5 +153,15 @@ which was forked from the [original Meridian 59 codebase]
 (https://github.com/Meridian59/Meridian59). Original codebase
 README file included as README.old.
 
-# building again
+## Server 900 Specific Changes
+* We've modified the build settings to increase spawns and loot drops
+* Unbound was uncapped to 100000 for testing, it still drains
+* Training Points per day are set to 500
+* We've fixed various entrances and spawnpoints on maps
+* New Explosion (spell) and Lightning Graphics
+* Simplified Account creation flow added to login
+* Accounts no longer restrict a user to 1 character at a time
+* In game macro (bot) commands to allow for simple spellbotting without needing another tool
+* Learning points increased by (now 20) to return to 1996 levels: 6/6 with 1 int.
+
 

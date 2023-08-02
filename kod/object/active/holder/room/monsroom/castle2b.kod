@@ -64,15 +64,15 @@ messages:
 
       plExits = Cons([ 15, 12, RID_CASTLE2A, 7, 15, ROTATE_NONE ],plExits);
       plExits = Cons([ 15, 13, RID_CASTLE2A, 7, 16, ROTATE_NONE ],plExits);
-      plExits = Cons([ 19, 27, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
-      plExits = Cons([ 20, 27, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
+      plExits = Cons([ 30, 59, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
+      plExits = Cons([ 29, 59, RID_CASTLE2A, 7, 31, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 40, 47, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
-      plExits = Cons([ 40, 48, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
-      plExits = Cons([ 40, 49, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 37, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 38, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
+      plExits = Cons([ 9, 39, RID_CASTLE2C, 2, 23, ROTATE_NONE ],plExits);
 
-      plExits = Cons([ 41, 27, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
-      plExits = Cons([ 41, 28, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
+      plExits = Cons([ 8, 58, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
+      plExits = Cons([ 8, 57, RID_CASTLE2D, 13, 12, ROTATE_NONE ],plExits);
 
       plExits = Cons([ 7,9, ROOM_LOCKED_DOOR ],plExits);
       plExits = Cons([ 7,10, ROOM_LOCKED_DOOR ],plExits);
@@ -100,7 +100,7 @@ messages:
       plExits = Cons([ 35,26, ROOM_LOCKED_DOOR ],plExits);
 
       plEdge_exits = $;
-      plEdge_Exits = Cons([ LEAVE_EAST, RID_J3, 37, 2, ROTATE_NONE ], plEdge_exits); 
+      plEdge_Exits = Cons([ LEAVE_WEST, RID_J3, 38, 24, ROTATE_NONE ], plEdge_exits); 
 
       propagate;
    }
