@@ -16,17 +16,17 @@ jobs:
       - name: PostBuild
         run: cmd /c postbuild.bat
       - name: Upload client artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: meridian_client
           path: "./run/localclient"
       - name: Upload server artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: meridian_server
           path: "./run/server"
       - name: Upload utils artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: meridian_utils
 
